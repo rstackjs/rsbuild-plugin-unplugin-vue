@@ -1,6 +1,6 @@
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { type Page, expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import { createRsbuild } from '@rsbuild/core';
 import { createRsbuild as createRsbuildV1 } from '@rsbuild/core-v1';
 import { pluginUnpluginVue } from '../../src';
