@@ -1,7 +1,7 @@
 {
   "name": "rsbuild-plugin-unplugin-vue",
   "version": "0.1.0",
-  "repository": "https://github.com/rspack-contrib/rsbuild-plugin-unplugin-vue",
+  "repository": "https://github.com/rstackjs/rsbuild-plugin-unplugin-vue",
   "license": "MIT",
   "type": "module",
   "exports": {
