@@ -2,7 +2,6 @@ import type { RsbuildPlugin } from '@rsbuild/core';
 import type { Options } from 'unplugin-vue/api';
 import { parseVueRequest } from 'unplugin-vue/api';
 import RspackPluginVue from 'unplugin-vue/rspack';
-import { getStyleRuleBranchIds } from './style-rule';
 
 export type PluginUnpluginVueOptions = {
   unpluginVueOptions?: Options;
@@ -38,6 +37,11 @@ const isScopedStyle = (request?: string) => {
 
   const { query } = parseVueRequest(request);
   return query.type === 'style' || query.lang === 'css';
+};
+
+const getStyleRuleBranchIds = (ruleId: string) => {
+  const baseRuleId = ruleId.replace(/-\d+$/, '');
+  return [baseRuleId, `${baseRuleId}-inline`, `${baseRuleId}-raw`];
 };
 
 export const pluginUnpluginVue = ({
