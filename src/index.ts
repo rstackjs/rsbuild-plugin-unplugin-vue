@@ -39,6 +39,11 @@ const isScopedStyle = (request?: string) => {
   return query.type === 'style' || query.lang === 'css';
 };
 
+const getStyleRuleBranchIds = (ruleId: string) => {
+  const baseRuleId = ruleId.replace(/-\d+$/, '');
+  return [baseRuleId, `${baseRuleId}-inline`, `${baseRuleId}-raw`];
+};
+
 export const pluginUnpluginVue = ({
   unpluginVueOptions,
 }: PluginUnpluginVueOptions = {}): RsbuildPlugin => ({
@@ -46,6 +51,7 @@ export const pluginUnpluginVue = ({
   setup(api) {
     const callerName = api.context.callerName;
     const isRslib = callerName === 'rslib';
+    const isRsbuildV1 = api.context.version?.startsWith('1.') ?? true;
 
     api.modifyRspackConfig((config, utils) => {
       config.plugins?.push(RspackPluginVue(unpluginVueOptions));
@@ -60,9 +66,15 @@ export const pluginUnpluginVue = ({
             isPreprocessorRule(CHAIN_ID.RULE.SASS, ruleId) ||
             isPreprocessorRule(CHAIN_ID.RULE.STYLUS, ruleId)
           ) {
-            const baseRule = config.module.rules.get(ruleId);
-            if (baseRule) {
+            const baseRule = config.module.rule(ruleId);
+
+            if (isRsbuildV1) {
               baseRule.enforce('post');
+              continue;
+            }
+
+            for (const branchId of getStyleRuleBranchIds(ruleId)) {
+              baseRule.oneOf(branchId).enforce('post');
             }
           }
         }
