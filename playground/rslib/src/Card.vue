@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-const card = ref('Hello World!');
+
+const _card = ref('Hello World!');
 </script>
 
 <template>

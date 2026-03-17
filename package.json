@@ -14,26 +14,30 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
+    "format": "biome check . --write --unsafe",
     "lint": "biome check .",
     "lint:write": "biome check . --write",
     "prepare": "simple-git-hooks && npm run build",
     "test": "playwright test",
-    "bump": "npx bumpp"
+    "bump": "bumpp"
   },
   "simple-git-hooks": {
-    "pre-commit": "npm run lint:write"
+    "pre-commit": "npm run format"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.4.7",
     "@playwright/test": "^1.58.2",
     "@rsbuild/core": "2.0.0-beta.8",
     "@rsbuild/core-v1": "npm:@rsbuild/core@^1.7.3",
     "@rslib/core": "^0.20.0",
-    "@types/node": "^22.19.15",
+    "@types/node": "^25.5.0",
+    "bumpp": "^11.0.1",
     "playwright": "^1.58.2",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
@@ -53,6 +57,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "unplugin-vue": "^6.2.0"
+    "unplugin-vue": "^7.1.1"
   }
 }

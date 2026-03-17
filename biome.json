@@ -1,8 +1,6 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
+  "$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "vcs": {
     "enabled": true,
     "defaultBranch": "main",
@@ -10,7 +8,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignore": ["./test/rslib/index.test.ts-snapshots/**"]
+    "includes": ["**", "!test/rslib/index.test.ts-snapshots"]
   },
   "formatter": {
     "indentStyle": "space"

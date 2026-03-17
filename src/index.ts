@@ -53,7 +53,7 @@ export const pluginUnpluginVue = ({
     const isRslib = callerName === 'rslib';
     const isRsbuildV1 = api.context.version?.startsWith('1.') ?? true;
 
-    api.modifyRspackConfig((config, utils) => {
+    api.modifyRspackConfig((config, _utils) => {
       config.plugins?.push(RspackPluginVue(unpluginVueOptions));
     });
 

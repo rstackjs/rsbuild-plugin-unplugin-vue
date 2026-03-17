@@ -2,7 +2,7 @@
 name: Release
 
 on:
-  # Run `npm run bump` to bump the version and create a git tag.
+  # Trigger on version tags or run manually.
   push:
     tags:
       - "v*"
