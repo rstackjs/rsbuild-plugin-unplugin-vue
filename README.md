@@ -27,11 +27,11 @@ Add plugin to your `rsbuild.config.ts`:
 
 ```ts
 // rsbuild.config.ts / rslib.config.ts
-import { pluginUnpluginVue } from 'rsbuild-plugin-unplugin-vue'
+import { pluginUnpluginVue } from 'rsbuild-plugin-unplugin-vue';
 
 export default {
   plugins: [pluginUnpluginVue()],
-}
+};
 ```
 
 ## Options
@@ -49,7 +49,7 @@ pluginUnpluginVue({
   unpluginVueOptions: {
     include: ['**/*.vue'],
   },
-})
+});
 ```
 
 ## License
