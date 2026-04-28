@@ -5,7 +5,7 @@ on:
   # Trigger on version tags or run manually.
   push:
     tags:
-      - "v*"
+      - 'v*'
 
   workflow_dispatch:
 
@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "pnpm"
+          cache: 'pnpm'
 
       - name: Install Dependencies
         run: pnpm install
@@ -42,4 +42,4 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          generateReleaseNotes: "true"
+          generateReleaseNotes: 'true'

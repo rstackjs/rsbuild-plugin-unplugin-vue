@@ -20,25 +20,26 @@
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
-    "format": "biome check . --write --unsafe",
-    "lint": "biome check .",
-    "lint:write": "biome check . --write",
-    "prepare": "simple-git-hooks && npm run build",
+    "format": "prettier -w .",
+    "lint": "rslint && prettier -c .",
+    "lint:write": "rslint --fix && prettier -w .",
+    "prepare": "simple-git-hooks && pnpm run build",
     "test": "playwright test",
     "bump": "bumpp"
   },
   "simple-git-hooks": {
-    "pre-commit": "npm run format"
+    "pre-commit": "pnpm run lint:write"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.7",
     "@playwright/test": "^1.58.2",
     "@rsbuild/core": "2.0.0-beta.8",
     "@rsbuild/core-v1": "npm:@rsbuild/core@^1.7.3",
     "@rslib/core": "^0.20.0",
+    "@rslint/core": "^0.5.0",
     "@types/node": "^25.5.0",
     "bumpp": "^11.0.1",
     "playwright": "^1.58.2",
+    "prettier": "^3.8.3",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
     "vue": "^3.5.30"
