@@ -27,11 +27,7 @@ test('ESM should build succeed', async () => {
   await rslib.build();
 
   const distFiles = await fs.promises.readdir(`${__dirname}/dist`);
-  expect(distFiles.sort()).toEqual([
-    'index.css',
-    'index.js',
-    'rslib-runtime.js',
-  ]);
+  expect(distFiles.sort()).toEqual(['index.css', 'index.js']);
 
   const jsContent = await fs.promises.readFile(
     `${__dirname}/dist/index.js`,
