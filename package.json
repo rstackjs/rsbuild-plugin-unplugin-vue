@@ -54,6 +54,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "unplugin-vue": "^7.2.0"
+    "unplugin-vue": "^8.0.0"
   }
 }
